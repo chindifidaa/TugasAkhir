@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TypeOfRoom;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TypeOfRoomSeeder extends Seeder
 {
@@ -12,6 +13,13 @@ class TypeOfRoomSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        TypeOfRoom::insert([
+            [
+                'name' => 'Superior Double Room'
+            ],
+            [
+                'name' => 'Superior Twin Room'
+            ],
+        ]);
     }
 }

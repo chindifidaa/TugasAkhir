@@ -9,7 +9,11 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "mtvs/eloquent-hashids": "^3.4",
+        "opcodesio/log-viewer": "^3.8",
+        "vinkla/hashids": "^11.0",
+        "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

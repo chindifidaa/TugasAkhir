@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TypePayment;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TypePaymentSeeder extends Seeder
 {
@@ -12,6 +13,13 @@ class TypePaymentSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        TypePayment::insert([
+            [
+                'name' => 'Transfer'
+            ],
+            [
+                'name' => 'COD'
+            ],
+        ]);
     }
 }

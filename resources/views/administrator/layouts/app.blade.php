@@ -2,32 +2,47 @@
 
 @section('app')
 <!-- Wrapper Start -->
-<div class="wrapper">
+@include('administrator.layouts.partials.sidebar')
 
-    @include('administrator.layouts.partials.sidebar')
+@include('administrator.layouts.partials.header')
 
-    @include('administrator.layouts.partials.header')
+<div class="page-wrapper">
+    <!--page-content-wrapper-->
+    <div class="page-content-wrapper">
+        <div class="page-content">
 
-    @yield('wrapper')
-</div>
-<!-- Wrapper END -->
-
-<!-- Footer -->
-<footer class="iq-footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li class="list-inline-item"><a href="terms-of-service.html">Terms of Use</a></li>
-                </ul>
+            <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+                <div class="breadcrumb-title pr-3">{{ $title ?? 'Unknown' }}</div>
+                <div class="pl-3">
+                    <nav aria-label="breadcrumb">
+                        @if (isset($breadcrumbs))
+                        <ol class="breadcrumb mb-0 p-0">
+                            @foreach ($breadcrumbs as $item)
+                                @if (isset($item['is_active']) && $item['is_active'])
+                                <li class="breadcrumb-item active" aria-current="page">{{ $item['title'] }}</li>
+                                @else
+                                <li class="breadcrumb-item"><a href="{{ $item['url'] }}">{{ $item['title'] }}</a></li>
+                                @endif
+                            @endforeach
+                        </ol>
+                        @endif
+                    </nav>
+                </div>
             </div>
-            <div class="col-lg-6 text-right">
-                Copyright 2020 <a href="#">FinDash</a> All Rights Reserved.
-            </div>
+
+            @yield('wrapper')
         </div>
     </div>
-</footer>
-<!-- Footer END -->
+
+    <!--start overlay-->
+</div>
+<div class="overlay toggle-btn-mobile"></div>
+<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+<div class="footer">
+    <p class="mb-0">Copyright © <script> document.write(new Date().getFullYear()); </script>. Pesona Java Ijen Homestay.</p>
+</div>
+
+<!-- Wrapper END -->
+
 
 @endsection

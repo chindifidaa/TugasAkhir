@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreignId('type_of_facility_id');
             $table->timestamps();
             $table->foreign('type_of_facility_id')->references('id')->on('type_of_facilities')->onDelete('cascade')->onUpdate('restrict');

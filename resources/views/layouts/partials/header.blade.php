@@ -23,9 +23,9 @@
                             <div class="login-dropdown">
                                 <ul>
                                     @if (!auth()->check())
-                                        <li><a href="{{ route('login')}}">Masuk</a></li>
+                                        <li><a href="{{ route('auth')}}">Masuk</a></li>
                                     @else
-                                        <li><a href="#">Keluar</a></li>
+                                        <li><a href="{{ route('apps.logout')}}">Keluar</a></li>
                                     @endif
                                 </ul>
                             </div>

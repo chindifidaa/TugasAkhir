@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TypeOfFacility;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TypeOfFacilitySeeder extends Seeder
 {
@@ -12,6 +13,28 @@ class TypeOfFacilitySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        TypeOfFacility::insert([
+            [
+                'name' => 'Umum',
+            ],
+            [
+                'name' => 'Servis Hotel',
+            ],
+            [
+                'name' => 'Fasilitas Publik',
+            ],
+            [
+                'name' => 'Fasilitas Kamar',
+            ],
+            [
+                'name' => 'Makan Dan Minuman',
+            ],
+            [
+                'name' => 'Konektivitas',
+            ],
+            [
+                'name' => 'Jasa Antar Jemput',
+            ],
+        ]);
     }
 }
