@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Administrator\Room\RoomController;
 use App\Http\Controllers\Administrator\User\UserController;
+use App\Http\Controllers\Administrator\Galery\GaleryController;
 use App\Http\Controllers\Administrator\Dashboard\DashboardController;
 
 use App\Http\Controllers\Contact\ContactController as GuestContactController;
@@ -40,6 +41,15 @@ Route::prefix('apps')->middleware('auth')->group( function () {
         Route::get('{room}/edit',[RoomController::class, 'edit'])->name('apps.rooms.edit');
         Route::post('{room}/update',[RoomController::class, 'update'])->name('apps.rooms.update');
         Route::get('{room}/delete',[RoomController::class, 'delete'])->name('apps.rooms.delete');
+    });
+
+    Route::prefix('galleries')->group( function () {
+        Route::get('',[GaleryController::class, 'index'])->name('apps.gallery');
+        Route::get('create',[GaleryController::class, 'create'])->name('apps.gallery.create');
+        Route::post('store',[GaleryController::class, 'store'])->name('apps.gallery.store');
+        Route::get('{galery}/edit',[GaleryController::class, 'edit'])->name('apps.gallery.edit');
+        Route::post('{galery}/update',[GaleryController::class, 'update'])->name('apps.gallery.update');
+        Route::get('{galery}/delete',[GaleryController::class, 'delete'])->name('apps.gallery.delete');
     });
 
     Route::prefix('users')->group( function () {

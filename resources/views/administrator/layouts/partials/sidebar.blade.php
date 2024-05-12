@@ -41,8 +41,8 @@
                 <div class="menu-title">Kamar</div>
             </a>
         </li>
-        <li>
-            <a href="chat-box.html">
+        <li {{ request()->is('apps/galleries*') ? 'mm-active' : '' }}>
+            <a href="{{ route('apps.gallery')}}">
                 <div class="parent-icon "><i class="bx bx-image"></i>
                 </div>
                 <div class="menu-title">Galeri</div>

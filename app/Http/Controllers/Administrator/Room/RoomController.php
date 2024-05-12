@@ -100,10 +100,10 @@ class RoomController extends Controller
 
 
             DB::commit();
-            toastr()->success('Berhasil menambahkan kamar!');
+            toastr()->success('Berhasil menambahkan data!');
             return redirect()->route('apps.rooms');
         } catch (Exception $e) {
-            toastr()->error('Berhasil menambahkan kamar!' . $e->getMessage());
+            toastr()->error('Berhasil menambahkan data!' . $e->getMessage());
             return redirect()->route('apps.rooms');
         }
     }
@@ -184,11 +184,11 @@ class RoomController extends Controller
             }
 
             DB::commit();
-            toastr()->success('Berhasil memperbarui kamar!');
+            toastr()->success('Berhasil memperbarui data!');
             return redirect()->route('apps.rooms');
         } catch (Exception $e) {
             DB::rollback();
-            toastr()->error('Gagal memperbarui kamar: ' . $e->getMessage());
+            toastr()->error('Gagal memperbarui data: ' . $e->getMessage());
             return redirect()->back();
         }
     }
@@ -201,11 +201,10 @@ class RoomController extends Controller
             }
             $room->delete();
 
-            toastr()->success('Berhasil mengahapus kamar!');
+            toastr()->success('Berhasil mengahapus data!');
             return redirect()->back();
         } catch (Exception $e) {
-            DB::rollback();
-            toastr()->error('Gagal menghapus kamar: ' . $e->getMessage());
+            toastr()->error('Gagal menghapus data: ' . $e->getMessage());
             return redirect()->back();
         }
     }
