@@ -7,7 +7,7 @@
         <div class="card-title">
             <div class="row align-items-center">
                 <div class="col-auto text-end ml-auto">
-                    <a href="{{ route('apps.rooms.create')}}" class="btn btn-custom mx-auto"> <span class="bx bx-plus"></span> Tambah</a>
+                    <a href="{{ route('apps.destination.create')}}" class="btn btn-custom mx-auto"> <span class="bx bx-plus"></span> Tambah</a>
                 </div>
             </div>
         </div>
@@ -18,28 +18,29 @@
                     <tr>
                         <th style="width: 5%">No.</th>
                         <th>Nama</th>
-                        {{-- <th>Sebagai</th>
-                        <th>Nomor</th>
-                        <th>Alamat</th> --}}
+                        <th>Deskripsi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($rooms as $item)
+                    @foreach ($destination as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><div class="media align-items-center">
-                                <img src="{{ asset('storage/images/rooms/'. $item->image)}}" width="45" height="45" class="rounded-circle" alt="">
-                                <div class="media-body ml-3">
-                                    <p class="font-weight-bold mb-0">{{ $item->name }}</p>
+                            <td>
+                                <div class="media align-items-center">
+                                    <img src="{{ asset('storage/images/destination/'. $item->image)}}" width="45" height="45" class="rounded-circle" alt="">
+                                    <div class="media-body ml-3">
+                                        <p class="font-weight-bold mb-0">{{ $item->name }}</p>
+                                    </div>
                                 </div>
-                            </div></td>
+                            </td>
+                            <td>{{ Str::limit($item->description, 40) }}</td>
                             <td>
                                 <div class="btn-group pull-right">
-                                    <a href="{{ route('apps.rooms.edit', $item)}}" class="btn btn-sm" title="Edit">
+                                    <a href="{{ route('apps.destination.edit', $item)}}" class="btn btn-sm" title="Edit">
                                         <span class="bx bx-edit-alt"> </span>
                                     </a>
-                                    <a href="{{ route('apps.rooms.delete', $item)}}" class="btn btn-sm" title="Hapus">
+                                    <a href="{{ route('apps.destination.delete', $item)}}" class="btn btn-sm" title="Hapus">
                                         <span class="bx bx-trash-alt"> </span>
                                     </a>
                                 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Administrator\Room\RoomController;
 use App\Http\Controllers\Administrator\User\UserController;
 use App\Http\Controllers\Administrator\Galery\GaleryController;
+use App\Http\Controllers\Administrator\Destination\DestinationController;
 use App\Http\Controllers\Administrator\Dashboard\DashboardController;
 
 use App\Http\Controllers\Contact\ContactController as GuestContactController;
@@ -30,7 +31,6 @@ Route::prefix('rooms')->group( function () {
     Route::get('payments',[GuestRoomController::class, 'payment'])->name('payments.rooms');
 });
 
-
 Route::prefix('apps')->middleware('auth')->group( function () {
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('apps.dashboard');
 
@@ -50,6 +50,14 @@ Route::prefix('apps')->middleware('auth')->group( function () {
         Route::get('{galery}/edit',[GaleryController::class, 'edit'])->name('apps.gallery.edit');
         Route::post('{galery}/update',[GaleryController::class, 'update'])->name('apps.gallery.update');
         Route::get('{galery}/delete',[GaleryController::class, 'delete'])->name('apps.gallery.delete');
+    });
+    Route::prefix('destinations')->group( function () {
+        Route::get('',[DestinationController::class, 'index'])->name('apps.destination');
+        Route::get('create',[DestinationController::class, 'create'])->name('apps.destination.create');
+        Route::post('store',[DestinationController::class, 'store'])->name('apps.destination.store');
+        Route::get('{destination}/edit',[DestinationController::class, 'edit'])->name('apps.destination.edit');
+        Route::post('{destination}/update',[DestinationController::class, 'update'])->name('apps.destination.update');
+        Route::get('{destination}/delete',[DestinationController::class, 'delete'])->name('apps.destination.delete');
     });
 
     Route::prefix('users')->group( function () {

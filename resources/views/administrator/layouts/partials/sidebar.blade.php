@@ -41,15 +41,15 @@
                 <div class="menu-title">Kamar</div>
             </a>
         </li>
-        <li {{ request()->is('apps/galleries*') ? 'mm-active' : '' }}>
+        <li class="{{ request()->is('apps/galleries*') ? 'mm-active' : '' }}">
             <a href="{{ route('apps.gallery')}}">
                 <div class="parent-icon "><i class="bx bx-image"></i>
                 </div>
                 <div class="menu-title">Galeri</div>
             </a>
         </li>
-        <li>
-            <a href="chat-box.html">
+        <li class="{{ request()->is('apps/destinations*') ? 'mm-active' : '' }}">
+            <a href="{{ route('apps.destination')}}">
                 <div class="parent-icon "><i class="bx bx-landscape"></i>
                 </div>
                 <div class="menu-title">Destinasi</div>
