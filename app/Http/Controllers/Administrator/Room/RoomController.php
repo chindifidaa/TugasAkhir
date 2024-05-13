@@ -116,7 +116,7 @@ class RoomController extends Controller
         $roomFacilities = FacilityRoom::where('room_id', $room->id)->pluck('facility_id')->toArray();
 
         $data = [
-            'title' => 'Tambah Kamar',
+            'title' => 'Edit Kamar',
             'breadcrumbs' => [
                 [
                     'title' => 'Beranda',

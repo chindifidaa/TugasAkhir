@@ -40,7 +40,7 @@ class GaleryController extends Controller
                 ],
                 [
                     'title' => 'Galeri',
-                    'url' => route('apps.rooms')
+                    'url' => route('apps.gallery')
                 ],
                 [
                     'title' => 'Tambah Galeri',
@@ -60,33 +60,33 @@ class GaleryController extends Controller
                 'name' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
-    
+
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $originalName = $file->getClientOriginalName();
                 $filename = time() . '_' . str_replace(' ', '-', $originalName);
                 $file->move(public_path('storage/images/gallery'), $filename);
             }
-    
+
             $galery = Galery::create([
                 'name' => $request->name,
                 'image' => $filename,
             ]);
-    
+
             toastr()->success('Berhasil menambahkan data!');
             return redirect()->route('apps.gallery');
-        
+
         }catch(Exception $e){
             toastr()->success('Gagal menambahkan data!'. $e->getMessage());
             return redirect()->back();
         }
-    
+
     }
 
     public function edit(Galery $galery)
     {
         $data = [
-            'title' => 'Tambah Galeri',
+            'title' => 'Edit Galeri',
             'breadcrumbs' => [
                 [
                     'title' => 'Beranda',
@@ -94,7 +94,7 @@ class GaleryController extends Controller
                 ],
                 [
                     'title' => 'Galeri',
-                    'url' => route('apps.rooms')
+                    'url' => route('apps.gallery')
                 ],
                 [
                     'title' => 'Tambah Galeri',
@@ -115,7 +115,7 @@ class GaleryController extends Controller
                 'name' => 'required',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
-    
+
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $originalName = $file->getClientOriginalName();
@@ -127,19 +127,19 @@ class GaleryController extends Controller
             } else {
                 $filename = $galery->image;
             }
-    
+
             $galery->update([
                 'name' => $request->name,
                 'image' => $filename,
             ]);
-    
+
             toastr()->success('Berhasil mengedit data!');
             return redirect()->route('apps.gallery');
-        
+
         }catch(Exception $e){
             toastr()->success('Gagal mengedit data!'. $e->getMessage());
             return redirect()->back();
-        } 
+        }
     }
 
     public function delete(Galery $galery)

@@ -40,7 +40,7 @@ class DestinationController extends Controller
                 ],
                 [
                     'title' => 'Destinasi',
-                    'url' => route('apps.rooms')
+                    'url' => route('apps.destination')
                 ],
                 [
                     'title' => 'Tambah Destinasi',
@@ -87,7 +87,7 @@ class DestinationController extends Controller
     public function edit(Destination $destination)
     {
         $data = [
-            'title' => 'Tambah Destinsai',
+            'title' => 'Edit Destinsai',
             'breadcrumbs' => [
                 [
                     'title' => 'Beranda',
@@ -95,7 +95,7 @@ class DestinationController extends Controller
                 ],
                 [
                     'title' => 'Destinasi',
-                    'url' => route('apps.rooms')
+                    'url' => route('apps.destination')
                 ],
                 [
                     'title' => 'Tambah Destinasi',

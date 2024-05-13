@@ -8,6 +8,7 @@ use App\Http\Controllers\Administrator\User\UserController;
 use App\Http\Controllers\Administrator\Galery\GaleryController;
 use App\Http\Controllers\Administrator\Destination\DestinationController;
 use App\Http\Controllers\Administrator\Dashboard\DashboardController;
+use App\Http\Controllers\Administrator\Facility\FacilityController;
 
 use App\Http\Controllers\Contact\ContactController as GuestContactController;
 use App\Http\Controllers\Destination\DestinationController as GuestDestinationController;
@@ -58,6 +59,14 @@ Route::prefix('apps')->middleware('auth')->group( function () {
         Route::get('{destination}/edit',[DestinationController::class, 'edit'])->name('apps.destination.edit');
         Route::post('{destination}/update',[DestinationController::class, 'update'])->name('apps.destination.update');
         Route::get('{destination}/delete',[DestinationController::class, 'delete'])->name('apps.destination.delete');
+    });
+    Route::prefix('facilities')->group( function () {
+        Route::get('',[FacilityController::class, 'index'])->name('apps.facility');
+        Route::get('create',[FacilityController::class, 'create'])->name('apps.facility.create');
+        Route::post('store',[FacilityController::class, 'store'])->name('apps.facility.store');
+        Route::get('{facility}/edit',[FacilityController::class, 'edit'])->name('apps.facility.edit');
+        Route::post('{facility}/update',[FacilityController::class, 'update'])->name('apps.facility.update');
+        Route::get('{facility}/delete',[FacilityController::class, 'delete'])->name('apps.facility.delete');
     });
 
     Route::prefix('users')->group( function () {

@@ -55,8 +55,8 @@
                 <div class="menu-title">Destinasi</div>
             </a>
         </li>
-        <li>
-            <a href="chat-box.html">
+        <li class="{{ request()->is('apps/facilities*') ? 'mm-active' : '' }}">
+            <a href="{{ route('apps.facility')}}">
                 <div class="parent-icon "><i class="bx bx-spreadsheet"></i>
                 </div>
                 <div class="menu-title">Fasilitas</div>
