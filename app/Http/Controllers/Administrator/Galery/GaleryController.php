@@ -73,12 +73,9 @@ class GaleryController extends Controller
                 'image' => $filename,
             ]);
 
-            toastr()->success('Berhasil menambahkan data!');
-            return redirect()->route('apps.gallery');
-
-        }catch(Exception $e){
-            toastr()->success('Gagal menambahkan data!'. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('apps.gallery')->with('success','Berhasil menambah data');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error','Gagal menambah data'. $e->getMessage());
         }
 
     }
@@ -133,12 +130,9 @@ class GaleryController extends Controller
                 'image' => $filename,
             ]);
 
-            toastr()->success('Berhasil mengedit data!');
-            return redirect()->route('apps.gallery');
-
-        }catch(Exception $e){
-            toastr()->success('Gagal mengedit data!'. $e->getMessage());
-            return redirect()->back();
+            return redirect()->route('apps.gallery')->with('success','Berhasil mengedit data');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error','Gagal mengedit data'. $e->getMessage());
         }
     }
 
@@ -150,11 +144,9 @@ class GaleryController extends Controller
             }
             $galery->delete();
 
-            toastr()->success('Berhasil mengahapus data!');
-            return redirect()->back();
+            return redirect()->route('apps.gallery')->with('success','Berhasil menghapus data');
         } catch (Exception $e) {
-            toastr()->error('Gagal menghapus data: ' . $e->getMessage());
-            return redirect()->back();
+            return redirect()->back()->with('error','Gagal menghapus data'. $e->getMessage());
         }
     }
 }

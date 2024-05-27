@@ -16,7 +16,7 @@ class RoomController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Pengguna',
+            'title' => 'Kamar',
             'breadcrumbs' => [
                 [
                     'title' => 'Beranda',
@@ -100,11 +100,10 @@ class RoomController extends Controller
 
 
             DB::commit();
-            toastr()->success('Berhasil menambahkan data!');
-            return redirect()->route('apps.rooms');
+
+             return redirect()->route('apps.rooms')->with('success','Berhasil menambah data');
         } catch (Exception $e) {
-            toastr()->error('Berhasil menambahkan data!' . $e->getMessage());
-            return redirect()->route('apps.rooms');
+            return redirect()->back()->with('error','Gagal menambah data'. $e->getMessage());
         }
     }
 
@@ -184,12 +183,9 @@ class RoomController extends Controller
             }
 
             DB::commit();
-            toastr()->success('Berhasil memperbarui data!');
-            return redirect()->route('apps.rooms');
+            return redirect()->route('apps.rooms')->with('success','Berhasil mengedit data');
         } catch (Exception $e) {
-            DB::rollback();
-            toastr()->error('Gagal memperbarui data: ' . $e->getMessage());
-            return redirect()->back();
+            return redirect()->back()->with('error','Gagal mengedit data'. $e->getMessage());
         }
     }
 
@@ -201,11 +197,9 @@ class RoomController extends Controller
             }
             $room->delete();
 
-            toastr()->success('Berhasil mengahapus data!');
-            return redirect()->back();
+             return redirect()->route('apps.rooms')->with('success','Berhasil menghapus data');
         } catch (Exception $e) {
-            toastr()->error('Gagal menghapus data: ' . $e->getMessage());
-            return redirect()->back();
+            return redirect()->back()->with('error','Gagal menambah data'. $e->getMessage());
         }
     }
 

@@ -6,14 +6,17 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Administrator\Room\RoomController;
 use App\Http\Controllers\Administrator\User\UserController;
 use App\Http\Controllers\Administrator\Galery\GaleryController;
-use App\Http\Controllers\Administrator\Destination\DestinationController;
-use App\Http\Controllers\Administrator\Dashboard\DashboardController;
 use App\Http\Controllers\Administrator\Facility\FacilityController;
+use App\Http\Controllers\Administrator\Dashboard\DashboardController;
+use App\Http\Controllers\Administrator\TypeOfRoom\TypeOfRoomController;
+use App\Http\Controllers\Administrator\TypeOfPayment\TypeOfPaymentController;
+use App\Http\Controllers\Administrator\TypeOfFacility\TypeOfFacilityController;
+use App\Http\Controllers\Administrator\Destination\DestinationController;
 
-use App\Http\Controllers\Contact\ContactController as GuestContactController;
-use App\Http\Controllers\Destination\DestinationController as GuestDestinationController;
-use App\Http\Controllers\Gallery\GalleryController as GuestGalleryController;
 use App\Http\Controllers\Room\RoomController as GuestRoomController;
+use App\Http\Controllers\Contact\ContactController as GuestContactController;
+use App\Http\Controllers\Gallery\GalleryController as GuestGalleryController;
+use App\Http\Controllers\Destination\DestinationController as GuestDestinationController;
 
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
@@ -67,6 +70,33 @@ Route::prefix('apps')->middleware('auth')->group( function () {
         Route::get('{facility}/edit',[FacilityController::class, 'edit'])->name('apps.facility.edit');
         Route::post('{facility}/update',[FacilityController::class, 'update'])->name('apps.facility.update');
         Route::get('{facility}/delete',[FacilityController::class, 'delete'])->name('apps.facility.delete');
+    });
+
+    Route::prefix('type-facilities')->group( function () {
+        Route::get('',[TypeOfFacilityController::class, 'index'])->name('apps.typeFacility');
+        Route::get('create',[TypeOfFacilityController::class, 'create'])->name('apps.typeFacility.crate');
+        Route::post('store',[TypeOfFacilityController::class, 'store'])->name('apps.typeFacility.store');
+        Route::get('{typeOfFacility}/edit',[TypeOfFacilityController::class, 'edit'])->name('apps.typeFacility.edit');
+        Route::post('{typeOfFacility}/update',[TypeOfFacilityController::class, 'update'])->name('apps.typeFacility.update');
+        Route::get('{typeOfFacility}/delete',[TypeOfFacilityController::class, 'delete'])->name('apps.typeFacility.delete');
+    });
+
+    Route::prefix('type-payments')->group( function () {
+        Route::get('',[TypeOfPaymentController::class, 'index'])->name('apps.typePayment');
+        Route::get('create',[TypeOfPaymentController::class, 'create'])->name('apps.typePayment.create');
+        Route::post('store',[TypeOfPaymentController::class, 'store'])->name('apps.typePayment.store');
+        Route::get('{typePayment}/edit',[TypeOfPaymentController::class, 'edit'])->name('apps.typePayment.edit');
+        Route::post('{typePayment}/update',[TypeOfPaymentController::class, 'update'])->name('apps.typePayment.update');
+        Route::get('{typePayment}/delete',[TypeOfPaymentController::class, 'delete'])->name('apps.typePayment.delete');
+    });
+
+    Route::prefix('type-rooms')->group( function () {
+        Route::get('',[TypeOfRoomController::class, 'index'])->name('apps.typeRoom');
+        Route::get('create',[TypeOfRoomController::class, 'create'])->name('apps.typeRoom.crate');
+        Route::post('store',[TypeOfRoomController::class, 'store'])->name('apps.typeRoom.store');
+        Route::get('{typeOfRoom}/edit',[TypeOfRoomController::class, 'edit'])->name('apps.typeRoom.edit');
+        Route::post('{typeOfRoom}/update',[TypeOfRoomController::class, 'update'])->name('apps.typeRoom.update');
+        Route::get('{typeOfRoom}/delete',[TypeOfRoomController::class, 'delete'])->name('apps.typeRoom.delete');
     });
 
     Route::prefix('users')->group( function () {

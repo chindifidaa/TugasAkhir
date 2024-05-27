@@ -69,11 +69,11 @@
                 <div class="menu-title">Master Data</div>
             </a>
             <ul>
-                <li> <a href="icons-line-icons.html"><i class="bx bx-right-arrow-alt"></i>Jenis Fasilitas</a>
+                <li class="{{ request()->is('apps/type-facilities*') ? 'mm-active' : '' }}"> <a href="{{ route('apps.typeFacility')}}"><i class="bx bx-right-arrow-alt"></i>Jenis Fasilitas</a>
                 </li>
-                <li> <a href="icons-boxicons.html"><i class="bx bx-right-arrow-alt"></i>Jenis Kamar</a>
+                <li class="{{ request()->is('apps/type-rooms*') ? 'mm-active' : '' }}"> <a href="{{ route('apps.typeRoom')}}"><i class="bx bx-right-arrow-alt"></i>Jenis Kamar</a>
                 </li>
-                <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Jenis Pembayaran</a>
+                <li class="{{ request()->is('apps/type-payments*') ? 'mm-active' : '' }}"> <a href="{{ route('apps.typePayment')}}"><i class="bx bx-right-arrow-alt"></i>Jenis Pembayaran</a>
                 </li>
             </ul>
         </li>
